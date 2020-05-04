@@ -21,7 +21,7 @@
          //updating the table
          $sql = "UPDATE users SET profile_id=:profile_id, user_id=:user_id, first_name=:first_name, last_name=:last_name
          , email=:email, headLine=:headLine, summary=:summary WHERE profile_id=:profile_id";
-         $query = $dbConn->prepare($sql);
+         $query = pdo->prepare($sql);
                  
          $query->bindparam(':profile_id', $profile_id);
          $query->bindparam(':user_id', $user_id);
@@ -31,11 +31,7 @@
          $query->bindparam(':headLine', $headLine);
          $query->bindparam(':summary', $summary);
          $query->execute();
-         
-         // Alternative to above bindparam and execute
-         // $query->execute(array(':id' => $id, ':name' => $name, ':email' => $email, ':age' => $age));
-                 
-         //redirectig to the display page. In our case, it is index.php
+    
          header("Location: index.php");
    }}
 ?>
